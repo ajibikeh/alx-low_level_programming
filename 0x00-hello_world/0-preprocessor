@@ -1,2 +1,14 @@
 #!/bin/bash
-gcc -E $CFILES -o c
+gcc -E $CFILES -o #!/bin/bash
+
+# Check if the C file variable is set
+if [ -z "$CFILE" ]; then
+  echo "Error: \$CFILE variable not set. Please set the variable to the C file you want to process."
+  exit 1
+fi
+
+# Run the C file through the preprocessor and save the result to 'output.c'
+cpp "$CFILE" -o output.c
+
+# Notify the user about the completion
+echo "Preprocessing complete. Output saved to 'output.c'."
